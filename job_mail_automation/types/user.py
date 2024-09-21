@@ -65,16 +65,18 @@ class User(BaseModel):
         #         photo_url=user.dp,
         #         email_verified=True,
         #         password="thispasswordisinsecure",
-                
+
         #     )
         # except Exception as e:
         #     print(e)
 
         return user
 
-    def update_oauth(self, creds: UserOAuthCredentials):
+    def update_oauth(self, creds: UserOAuthCredentials | None):
         self.oauth_credentials = creds
 
         db.collection("users").document(self.id).update(
-            {"oauthCredentials": creds.model_dump(by_alias=True)}
+            {
+                "oauthCredentials": creds.model_dump(by_alias=True) if creds else None,
+            }
         )

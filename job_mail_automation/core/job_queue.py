@@ -113,6 +113,7 @@ def send_email(job: Job):
             )
             user.update_oauth(oauth_credentials)
     except:
+        user.update_oauth(None)
         raise Exception("Mail server's credentials expired. Reauthentication required.")
 
     # Step 3: Send email
