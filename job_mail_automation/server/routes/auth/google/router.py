@@ -45,7 +45,15 @@ def callback():
     flow = Flow.from_client_config(
         client_config, GMAIL_SCOPES, redirect_uri=REDIRECT_URI
     )
-    flow.fetch_token(authorization_response=request.url)
+    try:
+        flow.fetch_token(authorization_response=request.url)
+    except:
+        return (
+            jsonify(
+                {"message": "internal_server_error", "reason": "OAuth token expired"}
+            ),
+            500,
+        )
 
     id_info = id_token.verify_oauth2_token(
         flow.credentials.id_token,  # type: ignore
