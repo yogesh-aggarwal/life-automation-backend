@@ -1,0 +1,33 @@
+Here's a description about me:
+---
+{self_description}
+---
+
+Here's some other information about the job:
+---
+- Company Name: {target_company_name}
+- Job ID: {target_job_id}
+- Job Link: {target_job_link}
+- Job Title: {target_job_title}
+---
+
+Here's the job description:
+---
+{target_job_description}
+---
+
+Here's the information about the target person:
+---
+- Name: {target_person_name}
+- Position: {target_person_position}
+- Company Name: {target_company_name}
+---
+
+Here's the sample email that I have written for you:
+---
+Subject: {sample_email_subject}
+Body:
+{sample_email_body}
+---
+
+Do not replicate this email as it is. Use this as a reference to write a personalized email for the target person. You can use the information provided above to write the email. Good luck!

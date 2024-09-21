@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "job-mail-automation"
+version = "0.1.0"
+description = ""
+authors = ["Yogesh Aggarwal <yogeshdevaggarwal@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.9"
+huggingface-hub = "^0.25.0"
+google-auth = "^2.34.0"
+google-auth-oauthlib = "^1.2.1"
+google-auth-httplib2 = "^0.2.0"
+google-api-python-client = "^2.146.0"
+openai = "^1.46.0"
+firebase-admin = "^6.5.0"
+pydantic = "^2.9.2"
+python-dotenv = "^1.0.1"
+flask = "^3.0.3"
+flask-cors = "^5.0.0"
+nanoid = "^2.0.0"
+
+[tool.poetry.scripts]
+main = "job_mail_automation.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,178 @@
+personal_info:
+  name: Yogesh Aggarwal
+  website: yogeshaggarwal.in
+  linkedin: linkedin/yogeshdev215
+  email: contact@yogeshaggarwal.in
+  phone: +91 9136566908
+
+education:
+  university: GGSIPU University
+  institute: Vivekananda Institute of Professional Studies — Technical Campus
+  degree: B.Tech in Computer Science & Engineering
+  specialization: Industrial Internet of Things (IIOT)
+  year: 4th year
+  cgpa: 8.5
+
+experience:
+  - role: Ad-hoc Product Lead, Manthan ERP
+    duration: 2022-2024
+    location: New Delhi, IN
+    description: |
+      - Delivered 70% operational improvements by developing an ERP system from scratch currently being used by over 7k+ students and faculty.
+      - Led a 5-member team to develop 2 dashboards (MERN) for administration & use and a dedicated academics app for students (React Native).
+      - Automated attendance tracking & leave management by integrating biometric machines & powerful reporting done through D3 & ChartJS.
+      - Utilized scheduled edge cloud functions & GCP for reporting, biometrics, attendance regulation, reminders, and other tasks powered by Linux VMs.
+
+  - role: Ad-hoc Freelance Product Developer, YouLaundry
+    duration: 2023
+    location: New Delhi, IN
+    description: |
+      - Spearheaded laundry service startup platform serving 2k+ satisfied users.
+      - Led cross-functional team of 4, architecting Flutter-based mobile solutions for customers, admins, and delivery agents.
+      - Used Firebase for real-time push notifications, data storage, and MERN (TypeScript) stack-based admin panel secured by JWT sessions.
+
+projects:
+  - name: Docker's Clone from Scratch
+    platform: Mocker
+    repository: GitHub
+    technologies: C++, Syscalls, Namespaces, UnionFS, Container Orchestration, DevOps
+    description: |
+      - Developed a high-performance container management system from scratch in C++, leveraging Linux kernel namespaces and systems programming expertise.
+      - Introduced automated container orchestration via compose file, enabling multi-container application deployment and management.
+      - Implemented robust client-server architecture with diverse client interfaces including CLI, web & Desktop app powered by web sockets (under progress).
+
+  - name: DNS Server with Custom TLD(s)
+    platform: Backbone
+    repository: GitHub
+    technologies: C/C++, Golang, Python, Shell, JavaScript/TypeScript, Dart, Rust, GLSL, Vulkan, OpenGL
+    description: |
+      - Implemented a fully-fledged DNS server in C++ adhering to RFC 1035, featuring LRU & LFU caching systems for embedded systems.
+      - Seamlessly resolving custom domain names, forming the backbone of a self-contained web ecosystem serviced by a custom browser called ”Steve” (under progress).
+      - Achieved interoperability with standard DNS requests while maintaining autonomy over domain resolution.
+
+community_work:
+  - name: SQL Tools
+    platform: PyPi
+    stats: 70k+ downloads, 2k+ active users
+    description: Python package for low-thought, multithreaded SQL database handling using numpy.
+
+  - name: Common React Toolkit
+    platform: GitHub
+    stats: 15k+ downloads, 500+ active users
+    description: Developed a React toolkit with caching, hydration, reactive state management, improving performance by 143%.
+
+  - name: Self Driving Car
+    platform: GitHub
+    technologies: Machine Learning, Computer Vision
+    description: Lane detection algorithm for self-driving car using OpenCV, Python, and PID control.
+
+links:
+  - github: github/yogesh-aggarwal
+  - linkedin: linkedin/YogeshDev215
+  - twitter: twitter/YogeshDev215
+
+skills:
+  programming_languages:
+    - C/C++
+    - Golang
+    - Python
+    - JavaScript/TypeScript
+    - Dart
+    - Java
+    - Rust
+    - Assembly
+    - Shell
+  technologies:
+    - AWS
+    - GCP
+    - Firebase
+    - MongoDB
+    - DynamoDB
+    - MySQL
+    - SQLite3
+    - Redis
+    - PostgreSQL
+    - Hadoop
+  devops:
+    - Docker
+    - Kubernetes
+    - CMake
+    - Premake
+    - MSVSC
+    - GCC
+    - NodeJS
+    - Swaggers
+  designing_tools:
+    - AdobeXD
+    - Figma
+  web_frameworks:
+    - ReactJS
+    - NextJS
+    - AngularJS
+    - TypeScript
+    - JQuery
+  web_styling:
+    - CSS
+    - SCSS
+    - Tailwind
+    - Postcss
+    - Less
+  web_ui_kits:
+    - MUI
+    - NextUI
+    - Bootstrap
+    - Shadcn
+    - Tailblocks
+    - Angular material
+  backend_frameworks:
+    - NodeJS
+    - Express
+    - Firebase
+    - Golang
+    - various other helper libraries such as PassportJS, SocketIO etc
+  databases:
+    - MongoDB
+    - DynamoDB
+    - MySQL
+    - SQLite3
+    - Redis
+    - PostgreSQL
+    - Firebase
+  mobile_frameworks:
+    - Flutter
+    - React Native
+  genai_frameworks:
+    - TensorFlow
+    - Keras
+    - PyTorch
+    - OpenCV
+  genai_apis:
+    - openai
+    - hugginface
+    - langchain
+  genai_databases:
+    - pinecone
+    - faiss
+    - neo4j
+  genai_llms:
+    - openai gpt
+    - finetuning
+    - llama2, llama3
+    - grok
+    - bert
+    - claude
+
+right_now_i_am:
+  - Working as a full-time freelancer on upwork.
+  - Developing a browser of my own (GitHub)[https://github.com/yogesh-aggarwal/steve] using custom made DNS server (GitHub)[https://github.com/yogesh-aggarwal/backbone] & UI renderer (just like Flutter's impeller).
+  - In collaboration with my own college to develop a complete (ERP solution)[http://vipstcerp.web.app].
+  - Maintaining my other notable projects such as Docker's clone (Mocker)[https://github.com/yogesh-aggarwal/mocker]
+
+research_publications:
+  - title: "ICICC 2024"
+    type: Conference Paper
+    description: Paper published at the International Conference on Innovative Computing and Communication (ICICC) 2024.
+  - title: "IJCRT 2023"
+    type: Journal Paper
+    award: Best Paper Award
+    description: Research paper published in the International Journal of Creative Research Thoughts (IJCRT), awarded Best Paper in 2023.

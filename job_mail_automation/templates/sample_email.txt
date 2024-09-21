@@ -1,0 +1,184 @@
+<div class="gs">
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+Hello Ibtesam Sir,
+<div></div>
+<div>
+I hope you're doing well. My name is Yogesh Aggarwal, and I am
+reaching out to express my keen&nbsp;<b
+>interest in the Software Engineer position at PropertyLoop</b
+>. I recently came across the job listing (<a
+href="https://www.linkedin.com/jobs/view/3968102214"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=https://www.linkedin.com/jobs/view/3968102214&amp;source=gmail&amp;ust=1726914460848000&amp;usg=AOvVaw37ji5cI34MovegUcVczb0F"
+rel="noopener"
+>#3968102214</a
+>) and was excited to see how closely it aligns with my skills
+and career aspirations, especially the team management &amp; an
+alignment towards microservices and dev ops.
+</div>
+<div></div>
+<div>
+For a quick overview I would highly suggest you to visit my
+portfolio (<a
+href="https://yogeshaggarwal.in/"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=https://yogeshaggarwal.in/&amp;source=gmail&amp;ust=1726914460848000&amp;usg=AOvVaw2cgUgGKbaRmo96PLYxka90"
+rel="noopener"
+>https://yogeshaggarwal.in</a
+>)
+</div>
+<div></div>
+<div>
+Here's&nbsp;<b>why should you consider me</b>:<br />
+<ol>
+<li>
+Ability to learn and adapt for building
+on&nbsp;<b>scale</b>&nbsp;&amp; a keen sense of&nbsp;<b
+>scalable system&nbsp;design</b
+>&nbsp;<b>principles</b>.
+</li>
+<li>Web development:</li>
+<ol>
+<li>
+<b>Frameworks:&nbsp;</b>ReactJS, NextJS, AngularJS,
+TypeScript, JQuery.
+</li>
+<li>
+<b>Styling:</b>&nbsp;CSS, SCSS, Tailwind, Postcss, Less.
+</li>
+<li>
+<b>UI Kits:</b>&nbsp;MUI, NextUI, Bootstrap, Shadcn,
+Tailblocks, Angular material.
+</li>
+<li>
+<b>Backend</b>: NodeJS, Express,&nbsp;Firebase, Golang,
+various other helper libraries such as PassportJS,
+SocketIO&nbsp;etc.
+</li>
+<li>
+<b>Databases:</b>&nbsp;Firestore, MongoDB, MySQL,
+PostgreSQL, CassandraDB.
+</li>
+<li>
+<b>Architectures:</b>&nbsp;Monolithic, microservices,
+serverless.
+</li>
+</ol>
+<li>Mobile development:</li>
+<ol>
+<li>Flutter, React Native, Ionic</li>
+</ol>
+<li>GenAI<b>:</b></li>
+<ol>
+<li><b>APIs:</b>&nbsp;OpenAI, Huggingface, Langchain</li>
+<li><b>Databases:</b>&nbsp;Neo4j, Pinecone</li>
+<li>
+<b>LLMs:</b>&nbsp;OpenAI GPT 4, fine-tuning, Llama3, Grok,
+Claude etc
+</li>
+</ol>
+<li>Automation (using python):</li>
+<ol>
+<li>System automation</li>
+<li>
+Web scraping experience using selenium &amp; scrapy.
+</li>
+</ol>
+</ol>
+</div>
+<div>Right now I am:</div>
+<div>
+<ol>
+<li>
+Working as a&nbsp;<b>full-time freelancer</b>&nbsp;on
+upwork.
+</li>
+<li>
+Developing a&nbsp;<b>browser of my own</b>&nbsp;(<a
+href="https://github.com/yogesh-aggarwal/steve"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=https://github.com/yogesh-aggarwal/steve&amp;source=gmail&amp;ust=1726914460849000&amp;usg=AOvVaw2IuK0Da7DEc2GtcgocqLy6"
+rel="noopener"
+>GitHub</a
+>) using custom made DNS server (<a
+href="https://github.com/yogesh-aggarwal/backbone"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=https://github.com/yogesh-aggarwal/backbone&amp;source=gmail&amp;ust=1726914460849000&amp;usg=AOvVaw2x-m9B1y8mIbnIlmRPAFqz"
+rel="noopener"
+>GitHub</a
+>) &amp; UI renderer (just like Flutter's impeller).
+</li>
+<li>
+In collaboration with my own college to develop a
+complete&nbsp;<a
+href="http://vipstcerp.web.app/"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=http://vipstcerp.web.app/&amp;source=gmail&amp;ust=1726914460849000&amp;usg=AOvVaw3I4cEoWfw4sF2Soyaa_cUl"
+rel="noopener"
+>ERP solution</a
+>.
+</li>
+<li>
+Maintaining my other notable projects such as&nbsp;<b
+>Docker's clone</b
+>&nbsp;(<a
+href="https://github.com/yogesh-aggarwal/mocker"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=https://github.com/yogesh-aggarwal/mocker&amp;source=gmail&amp;ust=1726914460849000&amp;usg=AOvVaw2tT5-i4FhvKpkofZF2OSl9"
+rel="noopener"
+>Mocker</a
+>)
+</li>
+</ol>
+</div>
+<div></div>
+<div>
+I would be&nbsp;<i>truly grateful</i>&nbsp;if you could consider
+referring me for this role.
+</div>
+<div>
+I&rsquo;ve attached my resume for your review, and I&rsquo;m
+happy to provide any further information you might need.
+</div>
+<div></div>
+<div>
+Thanks a lot for your time. Eagerly waiting for your reply.
+</div>
+</div>
+</div>
+<div>
+<div class="gmail_signature">
+<div></div>
+</div>
+</div>
+<br clear="all" />
+<div>
+<div class="gmail_signature">
+<div>
+<div>Yours truly,</div>
+Yogesh Aggarwal
+<div>
+<a
+href="http://yogeshaggarwal.in/"
+target="_blank"
+data-saferedirecturl="https://www.google.com/url?q=http://yogeshaggarwal.in/&amp;source=gmail&amp;ust=1726914460849000&amp;usg=AOvVaw3Rg1t1ZF413cQqfPpAlkca"
+rel="noopener"
+>yogeshaggarwal.in</a
+>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="yj6qo"></div>
+<div class="adL"></div>
+</div>
+</div>
+<div class="WhmR8e" data-hash="0"></div>
+</div>
+</div>
