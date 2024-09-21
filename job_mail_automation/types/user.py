@@ -35,15 +35,13 @@ class User(BaseModel):
     resumes: list[UserResume] = Field(..., alias="resumes")
 
     @staticmethod
-    def create(email: str, name: str, dp: str):
+    def create(id: str, email: str, name: str, dp: str):
         with open("job_mail_automation/templates/sample_email.txt") as f:
             sample_email_body = f.read().strip()
 
-        print(email, name, dp)
-
         user = User.model_validate(
             {
-                "id": email,
+                "id": id,
                 "email": email,
                 "dp": dp,
                 "name": name,
@@ -59,17 +57,18 @@ class User(BaseModel):
 
         db.collection("users").document(user.id).set(user.model_dump(by_alias=True))
 
-        try:
-            auth.create_user(
-                uid=user.id,
-                display_name=user.name,
-                email=user.email,
-                photo_url=user.dp,
-                email_verified=True,
-                password="thispasswordisinsecure",
-            )
-        except:
-            pass
+        # try:
+        #     auth.create_user(
+        #         uid=user.id,
+        #         display_name=user.name,
+        #         email=user.email,
+        #         photo_url=user.dp,
+        #         email_verified=True,
+        #         password="thispasswordisinsecure",
+                
+        #     )
+        # except Exception as e:
+        #     print(e)
 
         return user
 

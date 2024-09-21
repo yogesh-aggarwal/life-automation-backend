@@ -68,9 +68,7 @@ def callback():
     )
 
     if not len(user):
-        user = User.create(
-            id_info.get("email"), id_info.get("name"), id_info.get("picture")
-        )
+        return jsonify({"message": "user_not_found"}), 404
     else:
         user = User.model_validate(user[0].to_dict())
 
