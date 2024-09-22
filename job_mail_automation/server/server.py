@@ -1,3 +1,5 @@
+import uvicorn
+from asgiref.wsgi import WsgiToAsgi
 from flask import Flask
 from flask_cors import CORS
 
@@ -14,5 +16,9 @@ def health():
     return "OK", 200
 
 
+# Wrap the Flask app in ASGI
+asgi_app = WsgiToAsgi(app)
+
+
 def start_server():
-    app.run(host="0.0.0.0", port=3000, debug=True, use_reloader=False)
+    uvicorn.run(asgi_app, host="0.0.0.0", port=3000, log_level="info")
