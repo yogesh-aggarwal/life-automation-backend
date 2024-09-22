@@ -1,6 +1,6 @@
 import json
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from functools import wraps
 from typing import Any
 
@@ -157,11 +157,6 @@ class JobQueue:
         return None
 
     @staticmethod
-    def dispatch_many(jobs: list[Job]):
-        with ThreadPoolExecutor() as executor:
-            futures = [executor.submit(JobQueue.dispatch, job) for job in jobs]
-            for future in as_completed(futures):
-                try:
-                    future.result()
-                except Exception as e:
-                    print(f"Job failed with exception: {e}")
+    def dispatch_many(thread_pool: ThreadPoolExecutor, jobs: list[Job]):
+        for job in jobs:
+            thread_pool.submit(JobQueue.dispatch, job)
