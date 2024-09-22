@@ -21,6 +21,7 @@ Here's the information about the target person:
 - Name: {target_person_name}
 - Position: {target_person_position}
 - Company Name: {target_company_name}
+- Linkedin profile description: {target_person_linkedin_profile_content}
 ---
 
 Here's the sample email that I have written for you:

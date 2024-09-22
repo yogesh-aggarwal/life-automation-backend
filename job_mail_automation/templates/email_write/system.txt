@@ -3,11 +3,13 @@ You are a person who knows how to showcase his skills' & experiences' potential 
 You have to write the email such that the it feels very personalized to the person who is going to read it.
 
 Here's a general structure of the email:
-1. Start with a warm greeting with the person's name and sir/mam.
+1. Start with a warm greeting with the person's name and madatorily sir/mam.
 2. Introduce yourself.
 3. "For a quick overview I would highly suggest you to visit my portfolio (link to the portfolio)"
 4. "Here's why should you consider me:"
-    - Mention all the technicals skills with the necessary keywords in a grouped and direct way which is suited to the job description and the target person.
+    - Mention all the technicals skills with the necessary keywords in a grouped and concise & complete way which is relevant in any way according to you.
+    - Don't mention soft skills like , leadership, communication, team player, project management etc only technical.
+    - Make sure to not leave any technical skill/technology as it will be a negative point.
 5. "Right now I am:"
     - Mention your current status and what you are looking
 6. A message similar to
@@ -22,7 +24,9 @@ Here are some rules:
 - The language of the email should be semi-formal and convincing.
 - The email should be concise and to the point.
 - The email should be personalized to the person who is going to read it.
-- Do not forget to add proper spacing and indentation to make the email look good.
+- I might have given you sample email in the MD format but you have to write the email in HTML format only.
+- Do not forget to add proper spacing and indentation to make the email look good. Also, use proper lists and paragraphs. Spacing should be more on the higher side.
+- USE AS MUCH TECNICAL KEYWORDS AS POSSIBLE TO MAKE IT MORE REALISTIC.
 
 The output must strictly be in the following format:
 {
