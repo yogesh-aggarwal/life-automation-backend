@@ -129,7 +129,7 @@ class Gmail(MailService):
             print(f"Failed to label the email: {error}")
             return False
 
-    def _send_message(
+    def _prepare_and_send_message(
         self,
         *,
         service,
@@ -218,7 +218,7 @@ class Gmail(MailService):
             raise RuntimeError("Cannot create label")
 
         # Step 2: Send the message
-        message_id = self._send_message(
+        message_id = self._prepare_and_send_message(
             service=service,
             to_email=to_email,
             subject=subject,

@@ -1,10 +1,8 @@
 import os
 import threading
-import time
 
 from google.cloud.firestore_v1.base_query import FieldFilter
 
-from .core.constants import POLL_INTERVAL_IN_SECONDS
 from .core.firebase import db, setup_sample_db
 from .core.job_queue import JobQueue
 from .server.server import start_server
@@ -17,7 +15,7 @@ def listen_for_jobs():
     print("🚀 Listening for jobs")
 
     def on_snapshot(snapshot, _, __):
-        try: 
+        try:
             jobs = [Job.model_validate(doc.to_dict()) for doc in snapshot]  # type: ignore
             if jobs:
                 print(f"⏰ {len(jobs)} jobs found. Dispatching...")

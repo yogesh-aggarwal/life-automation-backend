@@ -1,10 +1,14 @@
-.PHONY: run setup deploy
+.PHONY: start setup deploy
 
-run:
+start:
 	poetry run main
 
 setup:
 	poetry install
 
 deploy:
-	git push origin main && git update-ref -d refs/heads/production && git checkout -b production && git push origin production -f && git checkout main
+	git push origin main
+	git update-ref -d refs/heads/production
+	git checkout -b production
+	git push origin production -f
+	git checkout main
