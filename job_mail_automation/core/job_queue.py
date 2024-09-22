@@ -73,15 +73,18 @@ def generate_email_content(job: Job):
         target_person_position=job.details.target_person_position,
         target_person_linkedin_profile_content=job.details.target_person_linkedin_profile_content,
     )
-    try:
-        res = llm.run(prompt)
-        if res is None:
-            return "", ""
-        res = json.loads(res)
+    for _ in range(5):
+        try:
+            res = llm.run(prompt)
+            if res is None:
+                raise Exception("LLM failed to generate content")
+            res = json.loads(res)
 
-        return res["subject"].strip(), res["body"].strip()
-    except Exception as e:
-        raise Exception(f"LLM failed with exception: {e}")
+            return res["subject"].strip(), res["body"].strip()
+        except Exception as e:
+            print(f"LLM failed with exception: {e}")
+
+    raise Exception("LLM failed to generate content")
 
 
 def send_email(job: Job):
@@ -117,14 +120,18 @@ def send_email(job: Job):
         raise Exception("Mail server's credentials expired. Reauthentication required.")
 
     # Step 3: Send email
-    mail = Gmail()
-    mail.send(
-        credentials=credentials,
-        to_email=job.details.target_person_email,
-        subject=job.result.subject,
-        html_body=job.result.body,
-        attachments=[],
-    )
+    try:
+        mail = Gmail()
+        mail.send(
+            credentials=credentials,
+            to_email=job.details.target_person_email,
+            subject=job.result.subject,
+            html_body=job.result.body,
+            attachments=[job.details.resume_url],
+        )
+    except Exception as e:
+        user.update_oauth(None)
+        raise Exception(f"Failed to send email: {e}")
 
     # Step 4: Update the job
     db.collection("jobs").document(job.id).update(

@@ -13,38 +13,20 @@ from .types.job import Job
 os.system("clear")
 
 
-def update_platform_vitals():
-    time_now_in_millis = int(time.time() * 1000)
-    db.collection("platform").document("vitals").update(
-        {
-            "lastPoll": time_now_in_millis,
-            "nextPoll": time_now_in_millis + POLL_INTERVAL_IN_SECONDS * 1000,
-        }
-    )
-
-
 def listen_for_jobs():
     print("🚀 Listening for jobs")
 
-    try:
-        while True:
-            snapshot = (
-                db.collection("jobs")
-                .where(filter=FieldFilter("status", "==", "WAITING"))
-                .stream()
-            )
-
+    def on_snapshot(snapshot, _, __):
+        try: 
             jobs = [Job.model_validate(doc.to_dict()) for doc in snapshot]  # type: ignore
             if jobs:
                 print(f"⏰ {len(jobs)} jobs found. Dispatching...")
                 JobQueue.dispatch_many(jobs)
+        except KeyboardInterrupt:
+            print("\n🛑 Exiting")
 
-            update_platform_vitals()
-
-            print(f"🕒 Sleeping for {POLL_INTERVAL_IN_SECONDS} seconds.")
-            time.sleep(POLL_INTERVAL_IN_SECONDS)
-    except KeyboardInterrupt:
-        print("\n🛑 Exiting")
+    query = db.collection("jobs").where(filter=FieldFilter("status", "==", "WAITING"))
+    query.on_snapshot(on_snapshot)
 
 
 def main():

@@ -1,7 +1,12 @@
 import base64
+import os
+from email import encoders
+from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from urllib.parse import unquote, urlsplit
 
+import requests
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
@@ -139,6 +144,38 @@ class Gmail(MailService):
         message["subject"] = subject
         msg_content = MIMEText(html_body, "html")
         message.attach(msg_content)
+
+        # Attach each PDF from the list of URLs
+        for attachment_url in attachments:
+            try:
+                # Download the PDF file
+                response = requests.get(attachment_url)
+                response.raise_for_status()  # Raise an error for bad responses
+
+                # Fallback: Extract filename from URL and sanitize
+                url_path = urlsplit(attachment_url).path
+                filename = unquote(os.path.basename(url_path))
+
+                # Ensure the filename ends with .pdf
+                if not filename.endswith(".pdf"):
+                    filename += ".pdf"
+
+                # Create a MIMEBase object for the PDF attachment
+                attachment_part = MIMEBase("application", "pdf")
+                attachment_part.set_payload(response.content)
+                encoders.encode_base64(attachment_part)
+
+                # Set the content headers
+                attachment_part.add_header(
+                    "Content-Disposition",
+                    f"attachment; filename={filename}",
+                )
+
+                # Attach the file to the message
+                message.attach(attachment_part)
+            except Exception as error:
+                print(f"Failed to attach {attachment_url}: {error}")
+                continue
 
         # Base64url encode the message
         raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
