@@ -4,11 +4,13 @@ from flask import Flask
 from flask_cors import CORS
 
 from .routes.auth.router import auth_router
+from .routes.publishing.router import publishing_router
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.register_blueprint(auth_router, url_prefix="/auth")
+app.register_blueprint(publishing_router, url_prefix="/publishing")
 
 
 @app.get("/health")
