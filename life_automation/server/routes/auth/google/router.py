@@ -10,6 +10,7 @@ from life_automation.core.constants import (
     GOOGLE_OAUTH_CLIENT_SECRET,
     GOOGLE_OAUTH_REDIRECT_URI,
 )
+from life_automation.server.middlewares.auth import firebase_auth_middleware_wrapped
 from life_automation.services.mail.gmail import GMAIL_SCOPES, Gmail
 from life_automation.types.user import User, UserOAuthCredentials
 
@@ -19,6 +20,7 @@ google_auth_router = Blueprint("google_auth_router", __name__)
 
 
 @google_auth_router.get("/auth_url")
+@firebase_auth_middleware_wrapped
 def url():
     mail = Gmail()
     auth_url = mail.get_oauth_authorization_url()

@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, request
 from pydantic import BaseModel, Field
 
 from life_automation.core.constants import (
+    MEDIUM_API_BASE_URI,
     MEDIUM_OAUTH_CLIENT_ID,
     MEDIUM_OAUTH_CLIENT_SECRET,
 )
@@ -10,15 +11,13 @@ from life_automation.types.user import User, UserOAuthCredentials
 
 medium_router = Blueprint("medium_router", __name__)
 
-API_BASE_URI = "https://api.medium.com/v1"
-
 
 class Helpers:
     @staticmethod
     def renew_access_token(refresh_token: str) -> str | None:
         try:
             response = requests.post(
-                f"{API_BASE_URI}/tokens",
+                f"{MEDIUM_API_BASE_URI}/tokens",
                 headers={
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Accept": "application/json",
@@ -44,7 +43,7 @@ class Helpers:
         try:
             # Send the GET request
             response = requests.get(
-                f"{API_BASE_URI}/me",
+                f"{MEDIUM_API_BASE_URI}/me",
                 headers={
                     "Authorization": f"Bearer {access_token}",
                     "Content-Type": "application/json",
@@ -108,7 +107,7 @@ def publish():
     # Step 2: Prepare the request body
     try:
         response = requests.post(
-            f"{API_BASE_URI}/users/{medium_user_id}/posts",
+            f"{MEDIUM_API_BASE_URI}/users/{medium_user_id}/posts",
             headers={
                 "Authorization": f"Bearer {access_token}",
                 "Content-Type": "application/json",

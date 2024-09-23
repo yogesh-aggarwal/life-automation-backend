@@ -8,6 +8,16 @@ load_dotenv()
 # General
 # ---------------------------------------------------------------------------------------
 
+MEDIUM_API_BASE_URI = "https://api.medium.com/v1"
+
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "*.yogeshaggarwal.in",
+    "*.vercel.app",
+    "*.web.app",
+]
+
 POLL_INTERVAL_IN_SECONDS = 10
 
 # ---------------------------------------------------------------------------------------

@@ -8,21 +8,20 @@ from life_automation.core.constants import (
     MEDIUM_OAUTH_CLIENT_SECRET,
     MEDIUM_OAUTH_REDIRECT_URI,
 )
+from life_automation.server.middlewares.auth import firebase_auth_middleware
 from life_automation.types.user import User, UserOAuthCredentials
 
 medium_auth_router = Blueprint("medium_auth_router", __name__)
 
+medium_auth_router.before_request(firebase_auth_middleware)
 
-@medium_auth_router.post("/auth_url")
+
+@medium_auth_router.get("/auth_url")
 def auth_url():
-    body = request.json
-    if not body or "email" not in body:
-        return jsonify({"message": "bad_request"}), 400
-    user_email = body.get("email")
-
+    user: User = getattr(request, "user")
     query_params = urlencode(
         {
-            "state": user_email,
+            "state": user.email,
             "response_type": "code",
             "scope": "basicProfile,publishPost",
             "client_id": MEDIUM_OAUTH_CLIENT_ID,
@@ -30,6 +29,8 @@ def auth_url():
         }
     )
     url = f"https://medium.com/m/oauth/authorize?{query_params}"
+
+    print(url)
 
     return jsonify({"message": "success", "url": url}), 200
 
