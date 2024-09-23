@@ -8,15 +8,14 @@ from life_automation.core.constants import (
     MEDIUM_OAUTH_CLIENT_SECRET,
     MEDIUM_OAUTH_REDIRECT_URI,
 )
-from life_automation.server.middlewares.auth import firebase_auth_middleware
+from life_automation.server.middlewares.auth import firebase_auth_middleware_wrapped
 from life_automation.types.user import User, UserOAuthCredentials
 
 medium_auth_router = Blueprint("medium_auth_router", __name__)
 
-medium_auth_router.before_request(firebase_auth_middleware)
-
 
 @medium_auth_router.get("/auth_url")
+@firebase_auth_middleware_wrapped
 def auth_url():
     user: User = getattr(request, "user")
     query_params = urlencode(
