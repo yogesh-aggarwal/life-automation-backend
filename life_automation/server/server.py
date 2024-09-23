@@ -1,6 +1,6 @@
 import uvicorn
 from asgiref.wsgi import WsgiToAsgi
-from flask import Flask
+from flask import Flask, redirect
 from flask_cors import CORS
 
 from life_automation.core.constants import ALLOWED_ORIGINS
@@ -8,9 +8,14 @@ from life_automation.core.constants import ALLOWED_ORIGINS
 from .routes.auth.router import auth_router
 
 app = Flask(__name__)
-CORS(app, origins=ALLOWED_ORIGINS)
+CORS(app, origins="*" or ALLOWED_ORIGINS)
 
 app.register_blueprint(auth_router, url_prefix="/auth")
+
+
+@app.route("/")
+def index():
+    return redirect("/health")
 
 
 @app.get("/health")
