@@ -1,10 +1,12 @@
 .PHONY: start setup deploy
 
 start:
-	poetry run main
+	clear
+	@poetry run main
 
 setup:
-	poetry install
+	clear
+	@poetry install
 
 deploy:
 	git push origin main
