@@ -20,6 +20,7 @@ def firebase_auth_middleware():
 
         setattr(request, "user", user)
     except Exception:
+        print("Rejected request with invalid Firebase token")
         return jsonify({"message": "unauthorized"}), 401
 
     return None
