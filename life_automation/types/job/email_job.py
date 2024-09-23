@@ -1,5 +1,7 @@
 from pydantic import BaseModel, Field
 
+from life_automation.core.firebase import EMAIL_JOBS_COLLECTION
+
 from .job import Job
 
 
@@ -31,3 +33,7 @@ class EmailJob(Job):
 
     details: EmailJobDetails = Field(alias="details")
     result: EmailJobResult | None = Field(alias="result", default=None)
+
+    def update_status(self, status: str) -> None:
+        self.status = status
+        EMAIL_JOBS_COLLECTION.document(self.id).update({"status": status})

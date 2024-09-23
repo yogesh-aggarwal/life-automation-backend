@@ -1,5 +1,7 @@
 from pydantic import BaseModel, Field
 
+from life_automation.core.firebase import PUBLISHING_JOBS_COLLECTION
+
 from .job import Job
 
 
@@ -20,3 +22,18 @@ class PublishingJobResult(BaseModel):
 class PublishingJob(Job):
     details: PublishingJobDetails = Field(alias="details")
     result: PublishingJobResult | None = Field(alias="result", default=None)
+
+    def update_status(
+        self,
+        status: str,
+        result: PublishingJobResult | None,
+        system_message: str | None,
+    ) -> None:
+        self.status = status
+        PUBLISHING_JOBS_COLLECTION.document(self.id).update(
+            {
+                "status": status,
+                "result": result,
+                "systemMessage": system_message,
+            }
+        )

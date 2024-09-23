@@ -8,8 +8,6 @@ from life_automation.types.user import User
 
 
 def generate_email_task(job: EmailJob) -> tuple[str, str]:
-    llm = GPT4oMini()
-
     # Step 1: Get user details
     try:
         user = User.model_validate(
@@ -37,6 +35,7 @@ def generate_email_task(job: EmailJob) -> tuple[str, str]:
     )
     for _ in range(5):
         try:
+            llm = GPT4oMini()
             res = llm.run(prompt)
             if res is None:
                 raise Exception("LLM failed to generate content")

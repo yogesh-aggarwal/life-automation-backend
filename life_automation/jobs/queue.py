@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 from functools import wraps
 from typing import Any, Callable, TypeVar
 
-from life_automation.core.firebase import EMAIL_JOBS_COLLECTION
+from life_automation.core.firebase import PUBLISHING_JOBS_COLLECTION
 from life_automation.types.job.job import Job
 
 T = TypeVar("T")
@@ -13,7 +13,7 @@ JobHandler = Callable[[T], dict[str, Any] | None]
 def _update_job_status(
     job_id: str, status: str, result: Any, system_message: str | None
 ):
-    EMAIL_JOBS_COLLECTION.document(job_id).update(
+    PUBLISHING_JOBS_COLLECTION.document(job_id).update(
         {
             "dateUpdated": int(time.time() * 1000),
             "status": status,
