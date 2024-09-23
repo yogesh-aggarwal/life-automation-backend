@@ -1,5 +1,5 @@
-from job_mail_automation.types.prompt import *
-from job_mail_automation.types.user import UserSampleEmail
+from life_automation.types.prompt import *
+from life_automation.types.user import UserSampleEmail
 
 
 class PromptFactory:
@@ -22,9 +22,9 @@ class PromptFactory:
         # Misc info
         sample_email: UserSampleEmail,
     ):
-        with open("job_mail_automation/templates/email_write/system.txt") as f:
+        with open("life_automation/templates/email_write/system.txt") as f:
             system_prompt = f.read().strip()
-        with open("job_mail_automation/templates/email_write/user.txt") as f:
+        with open("life_automation/templates/email_write/user.txt") as f:
             user_prompt = f.read().strip()
 
         user_prompt = user_prompt.format(

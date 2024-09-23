@@ -1,7 +1,6 @@
 from flask import Blueprint
 
-from job_mail_automation.server.middlewares.auth import \
-    firebase_auth_middleware
+from life_automation.server.middlewares.auth import firebase_auth_middleware
 
 from .medium.router import medium_router
 

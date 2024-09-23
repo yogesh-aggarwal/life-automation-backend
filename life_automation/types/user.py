@@ -1,7 +1,7 @@
 from google.cloud.firestore_v1.base_query import FieldFilter
 from pydantic import BaseModel, Field
 
-from job_mail_automation.core.firebase import USERS_COLLECTION, auth, db
+from life_automation.core.firebase import USERS_COLLECTION, auth, db
 
 
 class UserSampleEmail(BaseModel):
@@ -52,7 +52,7 @@ class User(BaseModel):
 
     @staticmethod
     def create(id: str, email: str, name: str, dp: str, password: str):
-        with open("job_mail_automation/templates/sample_email.txt") as f:
+        with open("life_automation/templates/sample_email.txt") as f:
             sample_email_body = f.read().strip()
 
         user = User(

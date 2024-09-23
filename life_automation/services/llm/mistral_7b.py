@@ -1,7 +1,7 @@
 from huggingface_hub import InferenceClient
 
-from job_mail_automation.core.constants import HF_API_KEY
-from job_mail_automation.types.llm import LLMService
+from life_automation.core.constants import HF_API_KEY
+from life_automation.types.llm import LLMService
 
 
 class Mistral7B(LLMService):

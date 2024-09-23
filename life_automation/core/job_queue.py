@@ -7,12 +7,12 @@ from typing import Any
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
-from job_mail_automation.core.firebase import JOBS_COLLECTION, USERS_COLLECTION
-from job_mail_automation.core.prompt_factory import PromptFactory
-from job_mail_automation.services.llm.gpt4omini import GPT4oMini
-from job_mail_automation.services.mail.gmail import Gmail
-from job_mail_automation.types.job import Job
-from job_mail_automation.types.user import User, UserOAuthCredentials
+from life_automation.core.firebase import JOBS_COLLECTION, USERS_COLLECTION
+from life_automation.core.prompt_factory import PromptFactory
+from life_automation.services.llm.gpt4omini import GPT4oMini
+from life_automation.services.mail.gmail import Gmail
+from life_automation.types.job import Job
+from life_automation.types.user import User, UserOAuthCredentials
 
 
 def _update_job_status(

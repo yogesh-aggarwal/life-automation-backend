@@ -2,7 +2,7 @@ import requests
 from flask import Blueprint, jsonify, request
 from pydantic import BaseModel, Field
 
-from job_mail_automation.types.user import User
+from life_automation.types.user import User
 
 medium_router = Blueprint("medium_router", __name__)
 

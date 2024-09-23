@@ -11,12 +11,12 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 
-from job_mail_automation.core.constants import (
+from life_automation.core.constants import (
     GOOGLE_OAUTH_CLIENT_ID,
     GOOGLE_OAUTH_CLIENT_SECRET,
     GOOGLE_OAUTH_REDIRECT_URI,
 )
-from job_mail_automation.types.mail import MailService
+from life_automation.types.mail import MailService
 
 GMAIL_SCOPES = [
     # User info

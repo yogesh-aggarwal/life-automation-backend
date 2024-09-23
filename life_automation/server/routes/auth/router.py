@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
 from pydantic import BaseModel, Field
 
-from job_mail_automation.core.firebase import USERS_COLLECTION
-from job_mail_automation.types.user import User
+from life_automation.core.firebase import USERS_COLLECTION
+from life_automation.types.user import User
 
 from .google.router import google_auth_router
 from .medium.router import medium_auth_router

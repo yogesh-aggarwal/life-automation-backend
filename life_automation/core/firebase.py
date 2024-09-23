@@ -12,9 +12,9 @@ JOBS_COLLECTION = db.collection("jobs")
 
 
 def setup_sample_db():
-    with open("job_mail_automation/templates/sample_email.txt") as f:
+    with open("life_automation/templates/sample_email.txt") as f:
         sample_email_body = f.read().strip()
-    with open("job_mail_automation/templates/self_description.yaml") as f:
+    with open("life_automation/templates/self_description.yaml") as f:
         self_description = f.read().strip()
     USERS_COLLECTION.document("yogeshdevaggarwal@gmail.com").set(
         {

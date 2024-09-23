@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "job-mail-automation"
+name = "life-automation"
 version = "0.1.0"
 description = ""
 authors = ["Yogesh Aggarwal <yogeshdevaggarwal@gmail.com>"]
@@ -23,7 +23,7 @@ uvicorn = "^0.30.6"
 asgiref = "^3.8.1"
 
 [tool.poetry.scripts]
-main = "job_mail_automation.main:main"
+main = "life_automation.main:main"
 
 [build-system]
 requires = ["poetry-core"]

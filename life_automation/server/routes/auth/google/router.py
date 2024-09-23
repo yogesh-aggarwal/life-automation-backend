@@ -5,13 +5,13 @@ from google.auth.transport import requests as google_requests
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 
-from job_mail_automation.core.constants import (
+from life_automation.core.constants import (
     GOOGLE_OAUTH_CLIENT_ID,
     GOOGLE_OAUTH_CLIENT_SECRET,
     GOOGLE_OAUTH_REDIRECT_URI,
 )
-from job_mail_automation.services.mail.gmail import GMAIL_SCOPES, Gmail
-from job_mail_automation.types.user import User, UserOAuthCredentials
+from life_automation.services.mail.gmail import GMAIL_SCOPES, Gmail
+from life_automation.types.user import User, UserOAuthCredentials
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 

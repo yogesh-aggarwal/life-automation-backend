@@ -1,7 +1,7 @@
 from flask import request, jsonify
 
-from job_mail_automation.core.firebase import auth
-from job_mail_automation.types.user import User
+from life_automation.core.firebase import auth
+from life_automation.types.user import User
 
 
 def firebase_auth_middleware():

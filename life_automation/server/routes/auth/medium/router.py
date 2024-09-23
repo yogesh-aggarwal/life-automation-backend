@@ -3,12 +3,12 @@ from urllib.parse import urlencode
 import requests
 from flask import Blueprint, jsonify, request
 
-from job_mail_automation.core.constants import (
+from life_automation.core.constants import (
     MEDIUM_OAUTH_CLIENT_ID,
     MEDIUM_OAUTH_CLIENT_SECRET,
     MEDIUM_OAUTH_REDIRECT_URI,
 )
-from job_mail_automation.types.user import User, UserOAuthCredentials
+from life_automation.types.user import User, UserOAuthCredentials
 
 medium_auth_router = Blueprint("medium_auth_router", __name__)
 

@@ -1,9 +1,7 @@
-import json
-
 from openai import OpenAI
 
-from job_mail_automation.core.constants import OPENAI_API_KEY
-from job_mail_automation.types.llm import LLMService
+from life_automation.core.constants import OPENAI_API_KEY
+from life_automation.types.llm import LLMService
 
 
 class GPT4oMini(LLMService):
