@@ -64,11 +64,15 @@ class Helpers:
 
 
 class PublishRequest(BaseModel):
-    title: str = Field(..., title="Title of the post")
-    content: str = Field(..., title="Markdown content of the post")
-    tags: list[str] = Field([], title="Tags for the post")
-    canonical_url: str = Field(None, title="Canonical URL of the post")
-    visibility: str = Field("public", title="Visibility of the post")
+    title: str = Field(..., title="Title of the post", alias="title")
+    content: str = Field(..., title="Markdown content of the post", alias="content")
+    tags: list[str] = Field([], title="Tags for the post", alias="tags")
+    canonical_url: str = Field(
+        None, title="Canonical URL of the post", alias="canonicalURL"
+    )
+    visibility: str = Field(
+        "public", title="Visibility of the post", alias="visibility"
+    )
 
 
 @medium_router.post("/publish")

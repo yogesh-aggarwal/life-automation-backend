@@ -8,7 +8,8 @@ db = firestore.client()
 auth = auth
 
 USERS_COLLECTION = db.collection("users")
-JOBS_COLLECTION = db.collection("jobs")
+EMAIL_JOBS_COLLECTION = db.collection("jobs")
+PUBLISHING_JOBS_COLLECTION = db.collection("publishing_jobs")
 
 
 def setup_sample_db():
@@ -48,7 +49,7 @@ def setup_sample_db():
         }
     )
 
-    JOBS_COLLECTION.document("12345").set(
+    EMAIL_JOBS_COLLECTION.document("12345").set(
         {
             "id": "12345",
             "status": "WAITING",

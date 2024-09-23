@@ -1,7 +1,9 @@
 from pydantic import BaseModel, Field
 
+from .job import Job
 
-class JobDetails(BaseModel):
+
+class EmailJobDetails(BaseModel):
     target_company_name: str = Field(alias="targetCompanyName")
 
     target_job_id: str = Field(alias="targetJobID")
@@ -19,22 +21,13 @@ class JobDetails(BaseModel):
     resume_url: str = Field(alias="resumeURL")
 
 
-class JobResult(BaseModel):
+class EmailJobResult(BaseModel):
     subject: str = Field(alias="subject")
     body: str = Field(alias="body")
 
 
-class Job(BaseModel):
-    id: str = Field(alias="id")
-    status: str = Field(alias="status")
-    user_id: str = Field(alias="userID")
+class EmailJob(Job):
+    date_email_sent: int | None = Field(alias="dateEmailSent", title="Date Email Sent")
 
-    task: str = Field(alias="task")
-
-    date_created: int = Field(alias="dateCreated")
-    date_updated: int = Field(alias="dateUpdated")
-    date_email_sent: int | None = Field(alias="dateEmailSent")
-
-    details: JobDetails = Field(alias="details")
-    result: JobResult | None = Field(alias="result", default=None)
-    system_message: str | None = Field(alias="systemMessage", default=None)
+    details: EmailJobDetails = Field(alias="details")
+    result: EmailJobResult | None = Field(alias="result", default=None)
