@@ -6,7 +6,8 @@ from life_automation.types.context.job import JobContext
 from life_automation.types.job.email_job import EmailJob
 from life_automation.types.job.publishing_job import PublishingJob
 
-JobHandler = Callable[[TypeVar("T")], dict[str, Any] | None]
+T = TypeVar("T")
+JobHandler = Callable[[T], dict[str, Any] | None]
 GenericJob = EmailJob | PublishingJob
 
 

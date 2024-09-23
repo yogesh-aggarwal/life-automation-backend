@@ -10,55 +10,52 @@ from life_automation.core.firebase import (
 from life_automation.jobs.email_job.handler import handle_email_job
 from life_automation.jobs.publishing_job.handler import handle_publishing_job
 from life_automation.jobs.queue import JobQueue
+from life_automation.types.context.job import JobContext
 from life_automation.types.job.email_job import EmailJob
 from life_automation.types.job.publishing_job import PublishingJob
-from life_automation.core.firebase import (
-    EMAIL_JOBS_COLLECTION,
-    PUBLISHING_JOBS_COLLECTION,
-)
 
 # Create a thread pool
 thread_pool = ThreadPoolExecutor(max_workers=5, thread_name_prefix="job-worker")
 
 
-def on_snapshot_email_jobs(snapshot, _, __):
+def handle_snapshot(snapshot, job_class_type, collection_ref, handler):
     try:
-        jobs = [EmailJob.model_validate(doc.to_dict()) for doc in snapshot]  # type: ignore
+        jobs = []
+        for doc in snapshot:
+            job = job_class_type.model_validate(doc.to_dict())
+            ctx = JobContext()
+            ctx.job_id = job.id
+            ctx.db_collection_ref = collection_ref
+
+            jobs.append((ctx, job))
         if not jobs:
             return
 
         job_count = f"{len(jobs)} job{'s' if len(jobs) > 1 else ''}"
-        job_desc = ", ".join([f"{job.id} ({job.task})" for job in jobs])
+        job_desc = ", ".join([f"{job.id} ({job.task})" for _, job in jobs])
 
-        JobQueue.dispatch_many(
-            thread_pool,
-            jobs,
-            handle_email_job,
-            EMAIL_JOBS_COLLECTION,
-        )
+        JobQueue.dispatch_many(thread_pool, jobs, handler)
         print(f"✅ Dispatched {job_count}: {job_desc}")
     except KeyboardInterrupt:
         print("\n🛑 Exiting")
+
+
+def on_snapshot_email_jobs(snapshot, _, __):
+    handle_snapshot(
+        snapshot,
+        EmailJob,
+        EMAIL_JOBS_COLLECTION,
+        handle_email_job,
+    )
 
 
 def on_snapshot_publishing_jobs(snapshot, _, __):
-    try:
-        jobs = [PublishingJob.model_validate(doc.to_dict()) for doc in snapshot]  # type: ignore
-        if not jobs:
-            return
-
-        job_count = f"{len(jobs)} job{'s' if len(jobs) > 1 else ''}"
-        job_desc = ", ".join([f"{job.id} ({job.task})" for job in jobs])
-
-        JobQueue.dispatch_many(
-            thread_pool,
-            jobs,
-            handle_publishing_job,
-            PUBLISHING_JOBS_COLLECTION,
-        )
-        print(f"✅ Dispatched {job_count}: {job_desc}")
-    except KeyboardInterrupt:
-        print("\n🛑 Exiting")
+    handle_snapshot(
+        snapshot,
+        PublishingJob,
+        PUBLISHING_JOBS_COLLECTION,
+        handle_publishing_job,
+    )
 
 
 def listen_for_jobs():
