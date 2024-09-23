@@ -1,4 +1,3 @@
-import os
 from urllib.parse import urlencode
 
 import requests
@@ -49,27 +48,30 @@ def callback():
         return jsonify({"message": "user_not_found"}), 404
 
     # Step 2: Gather access token and refresh token
-    response = requests.post(
-        "https://api.medium.com/v1/tokens",
-        headers={
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "application/json",
-            "Accept-Charset": "utf-8",
-        },
-        data={
-            "code": code,
-            "grant_type": "authorization_code",
-            "client_id": MEDIUM_OAUTH_CLIENT_ID,
-            "client_secret": MEDIUM_OAUTH_CLIENT_SECRET,
-            "redirect_uri": MEDIUM_OAUTH_REDIRECT_URI,
-        },
-    )
-    response.raise_for_status()
+    try:
+        response = requests.post(
+            "https://api.medium.com/v1/tokens",
+            headers={
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Accept": "application/json",
+                "Accept-Charset": "utf-8",
+            },
+            data={
+                "code": code,
+                "grant_type": "authorization_code",
+                "client_id": MEDIUM_OAUTH_CLIENT_ID,
+                "client_secret": MEDIUM_OAUTH_CLIENT_SECRET,
+                "redirect_uri": MEDIUM_OAUTH_REDIRECT_URI,
+            },
+        )
+        response.raise_for_status()
 
-    access_token, refresh_token = (
-        response.json()["access_token"],
-        response.json()["refresh_token"],
-    )
+        access_token, refresh_token = (
+            response.json()["access_token"],
+            response.json()["refresh_token"],
+        )
+    except Exception:
+        return jsonify({"message": "internal_server_error"}), 500
 
     # Step 3: Update the user's credentials
     user.update_creds_medium_oauth(

@@ -48,7 +48,10 @@ def callback():
     except:
         return (
             jsonify(
-                {"message": "internal_server_error", "reason": "OAuth token expired"}
+                {
+                    "message": "internal_server_error",
+                    "reason": "OAuth token expired",
+                }
             ),
             500,
         )

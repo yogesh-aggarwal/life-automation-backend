@@ -92,22 +92,8 @@ class User(BaseModel):
 
     def update_creds_google_oauth(self, creds: UserOAuthCredentials | None):
         self.credentials.google_oauth = creds
-
-        USERS_COLLECTION.document(self.id).update(
-            {
-                "oauthCredentials.google": (
-                    creds.model_dump(by_alias=True) if creds else None
-                ),
-            }
-        )
+        USERS_COLLECTION.document(self.id).set(self.model_dump(by_alias=True))
 
     def update_creds_medium_oauth(self, creds: UserOAuthCredentials | None):
         self.credentials.medium_oauth = creds
-
-        USERS_COLLECTION.document(self.id).update(
-            {
-                "oauthCredentials.medium": (
-                    creds.model_dump(by_alias=True) if creds else None
-                ),
-            }
-        )
+        USERS_COLLECTION.document(self.id).set(self.model_dump(by_alias=True))
