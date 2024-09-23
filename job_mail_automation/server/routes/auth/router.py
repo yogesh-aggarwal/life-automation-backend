@@ -5,10 +5,12 @@ from job_mail_automation.core.firebase import db
 from job_mail_automation.types.user import User
 
 from .google.router import google_auth_router
+from .medium.router import medium_auth_router
 
 auth_router = Blueprint("auth_router", __name__)
 
 auth_router.register_blueprint(google_auth_router, url_prefix="/google")
+auth_router.register_blueprint(medium_auth_router, url_prefix="/medium")
 
 
 class SignupRequestBody(BaseModel):

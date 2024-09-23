@@ -14,7 +14,7 @@ from googleapiclient.discovery import build
 from job_mail_automation.core.constants import (
     GOOGLE_OAUTH_CLIENT_ID,
     GOOGLE_OAUTH_CLIENT_SECRET,
-    REDIRECT_URI,
+    GOOGLE_OAUTH_REDIRECT_URI,
 )
 from job_mail_automation.types.mail import MailService
 
@@ -37,7 +37,7 @@ class Gmail(MailService):
             "web": {
                 "client_id": GOOGLE_OAUTH_CLIENT_ID,
                 "client_secret": GOOGLE_OAUTH_CLIENT_SECRET,
-                "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", REDIRECT_URI],
+                "redirect_uris": [GOOGLE_OAUTH_REDIRECT_URI],
                 "auth_uri": "https://accounts.google.com/o/oauth2/auth",
                 "token_uri": "https://oauth2.googleapis.com/token",
             }
@@ -45,7 +45,7 @@ class Gmail(MailService):
 
         # Initiate the OAuth flow using the client config dictionary
         flow = Flow.from_client_config(
-            client_config, GMAIL_SCOPES, redirect_uri=REDIRECT_URI
+            client_config, GMAIL_SCOPES, redirect_uri=GOOGLE_OAUTH_REDIRECT_URI
         )
         auth_url, _ = flow.authorization_url(prompt="consent")
 

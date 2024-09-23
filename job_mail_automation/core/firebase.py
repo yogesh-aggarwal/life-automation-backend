@@ -18,25 +18,30 @@ def setup_sample_db():
             "id": "yogeshdevaggarwal@gmail.com",
             "email": "yogeshdevaggarwal@gmail.com",
             "name": "Yogesh Aggarwal",
-            "dp": "",
-            "oauthCredentials": None,
-            "selfDescription": self_description,
-            "sampleEmail": {
-                "subject": "Referral request for a recent Backend Engineer job role (#3968102214)",
-                "body": sample_email_body,
+            "dp": "https://picsum.photos/seed/123/200/200",
+            "credentials": {
+                "google_oauth": None,
+                "medium_oauth": None,
             },
-            "resumes": [
-                {
-                    "title": "Backend developer",
-                    "url": "https://google.com",
-                    "dateCreated": 1726810330262,
+            "data": {
+                "selfDescription": self_description,
+                "sampleEmail": {
+                    "subject": "Referral request for a recent Backend Engineer job role (#3968102214)",
+                    "body": sample_email_body,
                 },
-                {
-                    "title": "Frontend developer",
-                    "url": "https://google2.com",
-                    "dateCreated": 1726810330262,
-                },
-            ],
+                "resumes": [
+                    {
+                        "title": "Backend developer",
+                        "url": "https://google.com",
+                        "dateCreated": 1726810330262,
+                    },
+                    {
+                        "title": "Frontend developer",
+                        "url": "https://google2.com",
+                        "dateCreated": 1726810330262,
+                    },
+                ],
+            },
         }
     )
 

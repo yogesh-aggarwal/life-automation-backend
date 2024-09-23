@@ -59,8 +59,8 @@ def generate_email_content(job: Job):
     # Step 2: Prepare email
     prompt = PromptFactory.make_email_write_prompt(
         # User details
-        self_description=user.self_description,
-        sample_email=user.sample_email,
+        self_description=user.data.self_description,
+        sample_email=user.data.sample_email,
         # Company details
         target_company_name=job.details.target_company_name,
         # Job details
@@ -96,7 +96,7 @@ def send_email(job: Job):
         user = User.model_validate(
             db.collection("users").document(job.user_id).get().to_dict()
         )
-        oauth_credentials = user.oauth_credentials
+        oauth_credentials = user.credentials.google_oauth
         if oauth_credentials is None:
             raise ValueError("Not authenticated with the mail service yet")
     except Exception as e:
@@ -105,18 +105,18 @@ def send_email(job: Job):
     # Step 2: Prepare user's OAuth credentials
     try:
         credentials = Credentials(
-            token=oauth_credentials.token,
+            token=oauth_credentials.access_token,
             refresh_token=oauth_credentials.refresh_token,
         )
         if credentials.expired and credentials.refresh_token:
             credentials.refresh(Request())
             oauth_credentials = UserOAuthCredentials(
-                token=credentials.token,
+                access_token=credentials.token,
                 refresh_token=credentials.refresh_token,
             )
-            user.update_oauth(oauth_credentials)
+            user.update_creds_google_oauth(oauth_credentials)
     except:
-        user.update_oauth(None)
+        user.update_creds_google_oauth(None)
         raise Exception("Mail server's credentials expired. Reauthentication required.")
 
     # Step 3: Send email
@@ -130,7 +130,7 @@ def send_email(job: Job):
             attachments=[job.details.resume_url],
         )
     except Exception as e:
-        user.update_oauth(None)
+        user.update_creds_google_oauth(None)
         raise Exception(f"Failed to send email: {e}")
 
     # Step 4: Update the job
