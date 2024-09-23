@@ -1,7 +1,7 @@
 from google.cloud.firestore_v1.base_query import FieldFilter
 from pydantic import BaseModel, Field
 
-from job_mail_automation.core.firebase import auth, db
+from job_mail_automation.core.firebase import USERS_COLLECTION, auth, db
 
 
 class UserSampleEmail(BaseModel):
@@ -43,9 +43,7 @@ class User(BaseModel):
 
     @staticmethod
     def get_from_email(email: str):
-        user = (
-            db.collection("users").where(filter=FieldFilter("email", "==", email)).get()
-        )
+        user = USERS_COLLECTION.where(filter=FieldFilter("email", "==", email)).get()
         if not user:
             raise ValueError(f"User with email {email} not found")
         user = user[0].to_dict()
@@ -76,7 +74,7 @@ class User(BaseModel):
             ),
         )
 
-        db.collection("users").document(user.id).set(user.model_dump(by_alias=True))
+        USERS_COLLECTION.document(user.id).set(user.model_dump(by_alias=True))
 
         try:
             auth.create_user(
@@ -95,7 +93,7 @@ class User(BaseModel):
     def update_creds_google_oauth(self, creds: UserOAuthCredentials | None):
         self.credentials.google_oauth = creds
 
-        db.collection("users").document(self.id).update(
+        USERS_COLLECTION.document(self.id).update(
             {
                 "oauthCredentials.google": (
                     creds.model_dump(by_alias=True) if creds else None
@@ -106,7 +104,7 @@ class User(BaseModel):
     def update_creds_medium_oauth(self, creds: UserOAuthCredentials | None):
         self.credentials.medium_oauth = creds
 
-        db.collection("users").document(self.id).update(
+        USERS_COLLECTION.document(self.id).update(
             {
                 "oauthCredentials.medium": (
                     creds.model_dump(by_alias=True) if creds else None

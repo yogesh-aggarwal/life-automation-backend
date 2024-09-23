@@ -7,7 +7,7 @@ from typing import Any
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
-from job_mail_automation.core.firebase import db
+from job_mail_automation.core.firebase import JOBS_COLLECTION, USERS_COLLECTION
 from job_mail_automation.core.prompt_factory import PromptFactory
 from job_mail_automation.services.llm.gpt4omini import GPT4oMini
 from job_mail_automation.services.mail.gmail import Gmail
@@ -18,7 +18,7 @@ from job_mail_automation.types.user import User, UserOAuthCredentials
 def _update_job_status(
     job_id: str, status: str, result: Any, system_message: str | None
 ):
-    db.collection("jobs").document(job_id).update(
+    JOBS_COLLECTION.document(job_id).update(
         {
             "dateUpdated": int(time.time() * 1000),
             "status": status,
@@ -51,7 +51,7 @@ def generate_email_content(job: Job):
     # Step 1: Get user details
     try:
         user = User.model_validate(
-            db.collection("users").document(job.user_id).get().to_dict()
+            USERS_COLLECTION.document(job.user_id).get().to_dict()
         )
     except Exception as e:
         raise Exception(f"Failed to fetch user details: {e}")
@@ -94,7 +94,7 @@ def send_email(job: Job):
     # Step 1: Generate prompt
     try:
         user = User.model_validate(
-            db.collection("users").document(job.user_id).get().to_dict()
+            USERS_COLLECTION.document(job.user_id).get().to_dict()
         )
         oauth_credentials = user.credentials.google_oauth
         if oauth_credentials is None:
@@ -134,7 +134,7 @@ def send_email(job: Job):
         raise Exception(f"Failed to send email: {e}")
 
     # Step 4: Update the job
-    db.collection("jobs").document(job.id).update(
+    JOBS_COLLECTION.document(job.id).update(
         {
             "dateEmailSent": int(time.time() * 1000),
         }

@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from google.cloud.firestore_v1.base_query import FieldFilter
 
-from .core.firebase import db, setup_sample_db
+from .core.firebase import JOBS_COLLECTION, setup_sample_db
 from .core.job_queue import JobQueue
 from .server.server import start_server
 from .types.job import Job
@@ -32,7 +32,7 @@ def listen_for_jobs():
         except KeyboardInterrupt:
             print("\n🛑 Exiting")
 
-    query = db.collection("jobs").where(filter=FieldFilter("status", "==", "WAITING"))
+    query = JOBS_COLLECTION.where(filter=FieldFilter("status", "==", "WAITING"))
     query.on_snapshot(on_snapshot)
 
     # Keep the thread alive

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from pydantic import BaseModel, Field
 
-from job_mail_automation.core.firebase import db
+from job_mail_automation.core.firebase import USERS_COLLECTION
 from job_mail_automation.types.user import User
 
 from .google.router import google_auth_router
@@ -30,7 +30,7 @@ def signup():
         return jsonify({"message": "invalid_body_content"}), 403
 
     # Step 2: Check if user already exists
-    exists = len(db.collection("users").where("email", "==", body.email).get()) > 0
+    exists = len(USERS_COLLECTION.where("email", "==", body.email).get()) > 0
     if exists:
         return jsonify({"message": "user_already_exists"}), 409
 

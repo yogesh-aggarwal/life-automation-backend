@@ -7,13 +7,16 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 auth = auth
 
+USERS_COLLECTION = db.collection("users")
+JOBS_COLLECTION = db.collection("jobs")
+
 
 def setup_sample_db():
     with open("job_mail_automation/templates/sample_email.txt") as f:
         sample_email_body = f.read().strip()
     with open("job_mail_automation/templates/self_description.yaml") as f:
         self_description = f.read().strip()
-    db.collection("users").document("yogeshdevaggarwal@gmail.com").set(
+    USERS_COLLECTION.document("yogeshdevaggarwal@gmail.com").set(
         {
             "id": "yogeshdevaggarwal@gmail.com",
             "email": "yogeshdevaggarwal@gmail.com",
@@ -45,7 +48,7 @@ def setup_sample_db():
         }
     )
 
-    db.collection("jobs").document("12345").set(
+    JOBS_COLLECTION.document("12345").set(
         {
             "id": "12345",
             "status": "WAITING",
