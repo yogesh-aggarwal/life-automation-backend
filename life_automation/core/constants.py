@@ -21,6 +21,17 @@ ALLOWED_ORIGINS = [
 POLL_INTERVAL_IN_SECONDS = 10
 
 # ---------------------------------------------------------------------------------------
+# Check for necessary files' existence
+# ---------------------------------------------------------------------------------------
+
+# GCP credentials file
+GCP_CREDENTIALS_FILE = os.getenv("GCP_CREDENTIALS_FILE")
+assert (
+    GCP_CREDENTIALS_FILE is not None
+), "Please set the GCP_CREDENTIALS_FILE environment variable."
+assert os.path.exists(GCP_CREDENTIALS_FILE), f"{GCP_CREDENTIALS_FILE} does not exist."
+
+# ---------------------------------------------------------------------------------------
 # Gen AI
 # ---------------------------------------------------------------------------------------
 
