@@ -6,6 +6,9 @@ start:
 
 dev: start
 
+clean:
+	@rm -rf ./**/__pycache__/
+
 setup:
 	clear
 	@poetry install
