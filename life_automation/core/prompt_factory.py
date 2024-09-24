@@ -42,7 +42,7 @@ class PromptFactory:
         )
 
         return LLMPrompt(
-            "Email write prompt",
+            "Email write",
             [
                 LLMMessage("system", system_prompt),
                 LLMMessage("user", user_prompt),
